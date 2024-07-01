@@ -1,6 +1,6 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
-import type * as Preset from "@docusaurus/preset-classic";
+import { themes as prismThemes } from "prism-react-renderer"
+import type { Config } from "@docusaurus/types"
+import type * as Preset from "@docusaurus/preset-classic"
 
 const config: Config = {
   title: "PassNAT 文档中心",
@@ -25,8 +25,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: "zh-Hans",
+    locales: ["zh-Hans"],
   },
 
   presets: [
@@ -37,8 +37,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/Star-Flex/passnat-doc/tree/main",
         },
         blog: {
           showReadingTime: true,
@@ -56,10 +55,10 @@ const config: Config = {
           priority: 0.5,
           ignorePatterns: ["/tags/**"],
           filename: "sitemap.xml",
-          createSitemapItems: async params => {
-            const { defaultCreateSitemapItems, ...rest } = params;
-            const items = await defaultCreateSitemapItems(rest);
-            return items.filter(item => !item.url.includes("/page/"));
+          createSitemapItems: async (params) => {
+            const { defaultCreateSitemapItems, ...rest } = params
+            const items = await defaultCreateSitemapItems(rest)
+            return items.filter((item) => !item.url.includes("/page/"))
           },
         },
       } satisfies Preset.Options,
@@ -129,13 +128,16 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} PassNat, Inc. Built with Docusaurus.`,
+      copyright: `<div style="display: flex; flex-direction: column; align-items : center;">
+        <div>Copyright © ${new Date().getFullYear()} PassNat, Inc. Built with Docusaurus.</div>
+        <a href="https://beian.miit.gov.cn" target="_blank">浙 ICP 备2022019220号 -3</a>
+      </div>`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
-};
+}
 
-export default config;
+export default config

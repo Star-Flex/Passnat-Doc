@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "dev": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -27,7 +27,9 @@
     "@docusaurus/module-type-aliases": "3.4.0",
     "@docusaurus/tsconfig": "3.4.0",
     "@docusaurus/types": "3.4.0",
-    "markdownlint": "^0.34.0",
+    "eslint": "^9.6.0",
+    "eslint-plugin-mdx": "^3.1.5",
+    "prettier": "^3.3.2",
     "typescript": "~5.2.2"
   },
   "browserslist": {
