@@ -6,6 +6,7 @@ const config: Config = {
   title: "PassNAT 文档中心",
   tagline: "你想知道的都在这里",
   favicon: "img/favicon.ico",
+  staticDirectories: ["static", "assets"],
 
   // Set the production url of your site here
   url: "https://doc.passnat.com",
@@ -26,7 +27,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "zh-Hans",
-    locales: ["zh-Hans"],
+    locales: ["zh-Hans"]
   },
 
   presets: [
@@ -37,17 +38,17 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/Star-Flex/passnat-doc/tree/main",
+          editUrl: "https://github.com/Star-Flex/passnat-doc/tree/main"
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
         },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: "./src/css/custom.css"
         },
         sitemap: {
           lastmod: "date",
@@ -59,10 +60,10 @@ const config: Config = {
             const { defaultCreateSitemapItems, ...rest } = params
             const items = await defaultCreateSitemapItems(rest)
             return items.filter((item) => !item.url.includes("/page/"))
-          },
-        },
-      } satisfies Preset.Options,
-    ],
+          }
+        }
+      } satisfies Preset.Options
+    ]
   ],
 
   themeConfig: {
@@ -72,26 +73,26 @@ const config: Config = {
       title: "PassNAT",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
+        src: "img/logo.svg"
       },
       items: [
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "文档",
+          label: "文档"
         },
         {
           to: "https://dashboard.passnat.com",
           label: "控制台",
-          position: "left",
+          position: "left"
         },
         {
           href: "https://github.com/star-flex/passnat-doc",
           label: "GitHub",
-          position: "right",
-        },
-      ],
+          position: "right"
+        }
+      ]
     },
     footer: {
       style: "dark",
@@ -101,9 +102,9 @@ const config: Config = {
           items: [
             {
               label: "Tutorial",
-              to: "/docs/intro",
-            },
-          ],
+              to: "/docs/intro"
+            }
+          ]
         },
         {
           title: "Community",
@@ -114,30 +115,30 @@ const config: Config = {
             // },
             {
               label: "QQ Group",
-              href: "https://qm.qq.com/q/2KNMIOn4UM",
-            },
-          ],
+              href: "https://qm.qq.com/q/2KNMIOn4UM"
+            }
+          ]
         },
         {
           title: "More",
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/star-flex/passnat-doc",
-            },
-          ],
-        },
+              href: "https://github.com/star-flex/passnat-doc"
+            }
+          ]
+        }
       ],
       copyright: `<div style="display: flex; flex-direction: column; align-items : center;">
         <div>Copyright © ${new Date().getFullYear()} PassNat, Inc. Built with Docusaurus.</div>
         <a href="https://beian.miit.gov.cn" target="_blank">浙 ICP 备2022019220号 -3</a>
-      </div>`,
+      </div>`
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-    },
-  } satisfies Preset.ThemeConfig,
+      darkTheme: prismThemes.dracula
+    }
+  } satisfies Preset.ThemeConfig
 }
 
 export default config
