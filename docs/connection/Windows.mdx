@@ -2,10 +2,10 @@
 sidebar_position: 1
 ---
 
-import Plyr from "plyr-react"
+import videoCons from "../../public/connection/windows-connection.mp4"
+import videoFrpMgr from "../../public/connection/windows-frpmgr.mp4"
 
-import video from "../../assets/connection/windows-connection.mp4"
-import videoFrpMgr from "../../assets/connection/windows-frpmgr.mp4"
+import Videoplayer from "../../src/components/video-player/index.tsx"
 
 # Windows 连接与使用
 
@@ -30,20 +30,7 @@ import videoFrpMgr from "../../assets/connection/windows-frpmgr.mp4"
 
 #### 视频版
 
-<Plyr
-  source={{
-    type: "video",
-    sources: [
-      {
-        src: video,
-        type: "video/mp4"
-      }
-    ]
-  }}
-  options={{
-    blankVideo: ""
-  }}
-/>
+<Videoplayer video={videoCons} />
 
 #### 文字版
 
@@ -78,17 +65,4 @@ import videoFrpMgr from "../../assets/connection/windows-frpmgr.mp4"
 
 #### 视频版
 
-<Plyr
-  source={{
-    type: "video",
-    sources: [
-      {
-        src: videoFrpMgr,
-        type: "video/mp4"
-      }
-    ]
-  }}
-  options={{
-    blankVideo: ""
-  }}
-/>
+<Videoplayer video={videoFrpMgr} />

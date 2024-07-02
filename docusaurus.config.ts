@@ -6,7 +6,7 @@ const config: Config = {
   title: "PassNAT 文档中心",
   tagline: "你想知道的都在这里",
   favicon: "img/favicon.ico",
-  staticDirectories: ["static", "assets"],
+  staticDirectories: ["static", "public"],
 
   // Set the production url of your site here
   url: "https://doc.passnat.com",
