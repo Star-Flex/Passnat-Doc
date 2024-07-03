@@ -4,7 +4,6 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
 import Layout from "@theme/Layout"
 import HomepageFeatures from "@site/src/components/HomepageFeatures"
 import Heading from "@theme/Heading"
-
 import styles from "./index.module.css"
 
 function HomepageHeader() {
@@ -18,7 +17,14 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link className="button button--secondary button--lg" to="/docs/intro">
-            点击开始阅读文档
+            点击阅读文档
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            style={{ marginLeft: "16px" }}
+            to="/aipage"
+          >
+            点击体验AI对话
           </Link>
         </div>
       </div>
@@ -31,7 +37,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      description="PassNAT 的文档站，这里包括了所有 PassNAT 站点内所需要了解的知识或得到问题解答。 "
     >
       <HomepageHeader />
       <main>

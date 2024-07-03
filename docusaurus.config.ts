@@ -83,6 +83,11 @@ const config: Config = {
           label: "文档"
         },
         {
+          to: "/aipage",
+          label: "AI对话",
+          position: "left"
+        },
+        {
           to: "https://dashboard.passnat.com",
           label: "控制台",
           position: "left"
