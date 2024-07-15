@@ -1,0 +1,163 @@
+---
+sidebar_position: 1
+---
+
+import mc_java_1 from "../../public/app/mc_java/mc_java_1.webp"
+import mc_java_2 from "../../public/app/mc_java/mc_java_2.webp"
+import mc_java_3 from "../../public/app/mc_java/mc_java_3.webp"
+import mc_java_4 from "../../public/app/mc_java/mc_java_4.webp"
+import mc_java_5 from "../../public/app/mc_java/mc_java_5.webp"
+
+# Minecraft:Java Server 中的应用 (Windows)
+
+:::tip
+本文仅适用于  `Windows` 以及 `Windows Server` 系统
+:::
+
+## 准备
+
+### 下载 Minecraft:Java Server 软件
+
+
+> 根据自己的需求，选择对应的服务端软件。本文以 `Fabric` 为例，如需使用 `Spigot` 系插件请选择 `Paper` 等下载
+
+- [Vanilla](https://www.minecraft.net/zh-hans/download/server/)
+- [Spigot](https://www.spigotmc.org/)
+- [Paper](https://papermc.io/downloads/paper/)
+- [Fabric](https://fabricmc.net/use/server/)
+
+### 下载并安装 Java
+
+> 请下载 msi 或 exe 格式文件，操作系统将会启动应用程序安装程序，你可以根据屏幕上的说明完成安装。此安装方式将会自动配置环境变量。
+
+- [Oracle JDK17 官网下载](https://www.oracle.com/cn/java/technologies/downloads/#jdk17-windows)
+
+:::info
+
+> Minecraft 不同版本使用的 Java 版本如下，建议使用与服务器版本匹配的 Java 版本，以确保最佳性能和兼容性:
+
+- Minecraft 1.20.5 及以上：需要 Java 21 或更高版本，且操作系统要求为 64 位。
+- Minecraft 1.18 及以上：需要 Java 17 或更高版本。
+- Minecraft 1.17 及以上：需要 Java 16 或更高版本。
+- Minecraft 1.13 及以上：需要 Java 8 或 Java 11。
+- Minecraft 1.12 及以下：需要 Java 8。
+
+:::
+
+## 设置服务器
+
+### 创建文件夹
+
+- 创建一个新文件夹来存放你的服务器文件。例如，可以在桌面上创建一个名为 `MinecraftServer` 的文件夹。
+
+### 放置服务器文件
+
+- 将下载的服务器 jar 文件移动到新创建的文件夹中。
+
+<img src={mc_java_1} alt="mc_java_1" />
+
+### 首次启动服务器
+
+- 打开 CMD 或 PowerShell (本文用) ，导航到你的服务器文件夹。
+- 使用以下命令启动服务器：
+
+```cmd
+java -Xmx6G -Xms1024M -jar 你下载服务端文件名字.jar nogui
+```
+
+:::info
+
+- `-Xmx6G` 表示最大内存使用 6GB ，你可以根据需要调整这个值。- `-Xms1024M` 表示初始内存使用 1024MB 。- `nogui` 表示不使用 gui
+
+:::
+
+<img src={mc_java_2} alt="mc_java_2" />
+
+- 出现下图所示即为完成本步骤
+
+<img src={mc_java_3} alt="mc_java_3" />
+:::tip
+
+- 小技巧1：在文件管理器顶部直接输入 `cmd` 或 `powershell` 即可在目录路径下打开，使用 `tab` 按键补全文件即可。
+- 小技巧2：小技巧1实在不会也可以直接 **拖拽文件** 进入 `cmd` 或 `powershell`，会自动补全文件路径。
+
+:::
+
+### 接受 EULA
+
+- 第一次运行服务器时会生成一些文件，其中包括 `eula.txt` 文件。
+- 打开 `eula.txt` 文件，将 `eula=false` 改为 `eula=true`， **保存** 并关闭文件。
+
+<img src={mc_java_4} alt="mc_java_4" />
+
+### 再次启动服务器
+
+- 再次运行启动命令：
+
+```cmd
+java -Xmx6G -Xms1024M -jar 你下载服务端文件名字.jar nogui
+```
+
+- 出现下图所示即为成功启动
+
+<img src={mc_java_5} alt="mc_java_5" />
+
+## 配置服务器
+
+### 修改服务器设置
+
+- 打开生成的 `server.properties` 文件，你可以在这里修改服务器的各种设置，例如端口、游戏模式、最大玩家数量等。
+
+  :::info
+
+  - 默认 **端口** 为 `25565` 。如果需要修改，请确保选择一个可用的端口。
+  - 根据你的偏好设置默认的 **游戏模式** 和 **难度** ：
+    - `gamemode=` 后跟 `survival`、`creative`、`adventure` 或 `spectator` 。
+    - `difficulty=` 后跟 `peaceful`、`easy`、`normal`或`hard` 。
+  - 根据服务器性能和带宽设置 **最大玩家数量** ：
+    - `max-players=` 后跟一个适当的数字。
+  - 如果允许 **离线账户登录** ，请设置：
+    - `online-mode=false` 。
+  - 如果需要开启 **白名单** ，请设置：
+    - `white-list=true` ，：白名单添加等相关命令见 Minecraft Wiki 。
+  - 设置 **motd** ：
+    - `motd=` 后跟你想设置的为motd的文本。
+
+  :::
+
+### 使用 PassNAT 穿透
+
+- 如果你希望其他人能够通过互联网连接到你的服务器，需要在公网上开放服务器使用的端口(在上一步骤设置，默认端口为 `25565`)。
+- 具体操作方法见本站的另一篇文章 [Windows 连接与使用](../connection/windows)
+
+### 安装 mod 或 插件 (可选)
+
+- 如果你希望添加更多功能与玩法，可以考虑安装 mod 或 插件。
+
+## 启动并连接
+
+### 启动服务器
+
+- 每次启动服务器都需要运行启动命令：
+
+```cmd
+java -Xmx6G -Xms1024M -jar 你下载服务端文件名字.jar nogui
+```
+
+### 连接服务器
+
+- 启动 Minecraft 客户端，选择多人游戏，点击添加服务器，输入使用 PassNAT 穿透得到的 IP 地址和端口，格式为 `ip:端口` ，即可连接到你的服务器。
+
+## 管理与维护
+
+### 管理工具
+
+- 你可以使用一些管理工具，例如： [MCSManager](https://github.com/MCSManager/MCSManager) 来远程管理服务器。
+
+### 备份
+
+- 定期备份服务器数据，防止数据丢失。
+
+## 结束
+
+- 如果你有更多问题或者需要进一步的帮助，可以尝试使用本站AI [PassNAT DocAI](/aipage) 寻求帮助
