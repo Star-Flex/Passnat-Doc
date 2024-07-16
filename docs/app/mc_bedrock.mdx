@@ -1,0 +1,126 @@
+---
+sidebar_position: 2
+---
+
+import mc_bedrock_1 from "../../public/app/mc_bedrock/mc_bedrock_1.webp"
+import mc_bedrock_2 from "../../public/app/mc_bedrock/mc_bedrock_2.webp"
+
+# Minecraft:Bedrock Server 中的应用 (Windows)
+
+:::tip
+本文仅适用于 `Windows` 以及 `Windows Server` 系统。
+:::
+
+## 准备
+
+### 下载 Minecraft:Bedrock Dedicated Server (BDS) 软件
+
+> 本文以 `BDS` 为例。
+
+- [BDS](https://www.minecraft.net/zh-hans/download/server/)
+
+:::info
+
+> Bedrock Server 的 Windows 版本需要：
+
+- Windows 10 版本 1703 或更高版本
+- Windows Server 2016 或更高版本
+
+:::
+
+### 下载并安装 Microsoft Visual C++ (可选)
+
+> 如果您在按以下步骤部署时出现了 **错误** `由于找不到 VCRUNTIME140_1.dll ，无法继续执行代码。` ，可以尝试安装 Microsoft Visual C++ 。
+
+- [Visual C++ 下载](https://learn.microsoft.com/zh-cn/cpp/windows/latest-supported-vc-redist)
+
+## 设置服务器
+
+### 创建文件夹
+
+- 创建一个新文件夹来存放你的服务器文件。例如，可以在桌面上创建一个名为 `MinecraftServer` 的文件夹。
+
+### 解压服务器文件
+
+- 将 `bedrock-server-1.xx.x.xx.zip` 解压到新创建的文件夹中。
+
+<img src={mc_bedrock_1} alt="mc_bedrock_1" />
+
+### 启动服务器
+
+- 双击 `bedrock_server.exe` 文件以启动服务器。
+- 或 使用[崩溃自启脚本](#崩溃自启脚本)中的崩溃自启脚本.
+
+- 出现下图所示即为成功启动。
+
+<img src={mc_bedrock_2} alt="mc_bedrock_2" />
+
+## 配置服务器
+
+### 修改服务器设置
+
+- 打开 `server.properties` 文件，你可以在这里修改服务器的各种设置，例如端口、游戏模式、最大玩家数量等。
+
+  :::info
+
+  - 默认 **端口** 为 `19132` ，如需修改：
+    - `server-port=` 后跟一个可用的端口号。
+  - 根据你的偏好设置默认的 **游戏模式** 和 **难度** ：
+    - `gamemode=` 后跟 `survival`、`creative`、`adventure` 或 `spectator` 。
+    - `difficulty=` 后跟 `peaceful`、`easy`、`normal`或`hard` 。
+  - 根据服务器性能和带宽设置 **最大玩家数量** ：
+    - `max-players=` 后跟一个适当的数字。
+  - 默认 **挂机踢出时间** 为 ``30`` 分钟，如需修改：
+    - `player-idle-timeout=` 后跟一个适当的数字。
+  - 如需开启 **白名单** ，请设置：
+    - `white-list=true` ，：白名单添加等相关命令见 Minecraft Wiki 。
+  - 设置 **服务器名称** ：
+    - `server-name=` 后跟你想设置的为游戏内服务器列表中显示服务器名称的文本。
+
+  :::
+
+### 使用 PassNAT 穿透
+
+- 如果你希望其他人能够通过互联网连接到你的服务器，需要在公网上开放服务器使用的端口(在上一步骤设置，默认端口为 `25565`)。
+- 传输协议请选择 `udp` 。
+- 具体操作方法见本站的另一篇文章 [Windows 连接与使用](../connection/windows)
+
+## 启动并连接
+
+### 启动服务器
+
+- 双击 `bedrock_server.exe` 文件
+
+### 连接服务器
+
+- 启动 Minecraft:Bedrock 客户端，选择 ``服务器`` ，点击 ``添加服务器`` ，输入使用 PassNAT 穿透得到的 IP 地址和端口，在 `服务器地址` 一栏填入 IP ，在 `端口` 一栏填入端口即可连接到你的服务器。
+
+## 管理与维护
+
+### 崩溃自启脚本
+
+- 创建一个名为 `start.txt` 的文件，粘贴这个脚本内容，**保存**后修改文件名为 ``start.bat`` 。
+- 双击此脚本即可启用
+
+```cmd
+@echo off
+title Minecraft Bedrock Server
+:start
+echo Starting Minecraft Bedrock server...
+bedrock_server.exe
+echo Server closed or crashed, restarting in 10 seconds...
+timeout /t 10
+goto start
+```
+
+### 管理工具
+
+- 你可以使用一些管理工具，例如： [MCSManager](https://github.com/MCSManager/MCSManager) 来远程管理服务器。
+
+### 备份
+
+- 定期备份服务器数据，防止数据丢失。
+
+## 结束
+
+- 如果你有更多问题或者需要进一步的帮助，可以尝试使用本站AI [PassNAT DocAI](/aipage) 寻求帮助
