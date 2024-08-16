@@ -1,0 +1,33 @@
+---
+sidebar_position: 3
+---
+
+import pic1 from "../../public/app/alist/alist-1.webp"
+
+# Alist 安装与部署 (Linux)
+
+:::tip
+本文仅适用于 `Linux` 系统。
+:::
+
+## 部署 Alist 服务端
+
+> 本文部署使用 `Docker`。详细操作请参考 [原作者文档](https://alist.nn.ci/)。
+
+### 使用 Docker 进行部署服务端
+
+```bash
+docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:latest
+```
+
+### 部署完毕
+
+访问 `http://localhost:5244` 检查 Alist 状态，其中 `localhost` 为你的服务器地址，本地环境则无需修改。
+
+<img src={pic1} alt="alist_pic1" />
+
+### 部署 PassNAT 内网穿透
+
+请参考本站 [Linux 连接与使用](../connection/linux) 文档。
+
+注意当前 Alist 服务端默认端口为 `5244`，所以请在 PassNAT 控制台中新增隧道时设置内网端口为 `5244` 端口。公网端口可留空或自定义。

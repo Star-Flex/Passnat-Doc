@@ -1,0 +1,68 @@
+---
+sidebar_position: 2
+---
+
+import Videoplayer from "../../src/components/video-player/index.tsx"
+
+# Linux 连接与使用
+
+:::tip
+本页面适用于 `Linux` 各大发行版系统。
+:::
+
+## 使用 Docker 部署 Frpc
+
+### 前往 PassNAT 控制台创建隧道，复制配置文件。
+
+### 镜像准备
+
+- `docker pull snowdreamtech/frpc:latest` dockerhub镜像，由 [snowdreamtech](https://hub.docker.com/r/snowdreamtech/frpc) 提供。
+- `docker pull uhub.service.ucloud.cn/ucpublic/frpc:latest` 国内加速镜像，加速服务由 UCloud 提供。
+
+### 视频版
+
+<Videoplayer video="https://bucket.passnat.com/bucket-passnat/tutorial/linux-docker.mp4" />
+
+### 文字版
+
+1. 首先，创建配置文件 `config.toml`，并将配置文件放置在 `/frpc` 目录下。
+2. 使用 `docker` 启动 Frpc 客户端。
+
+> 注意: 请将 `/etc/frp/frpc.toml` 替换为你的配置文件路径。
+
+```bash
+docker run --restart=always --network host -d -v /root/frpc/config.toml:/etc/frp/frpc.toml --name frpc snowdreamtech/frpc
+```
+
+也可以使用由Ucloud提供的国内加速镜像
+
+```bash
+docker run --restart=always --network host -d -v /root/frpc/config.toml:/etc/frp/frpc.toml --name frpc uhub.service.ucloud.cn/ucpublic/frpc:latest
+```
+
+## 二进制文件直接部署
+
+### 客户端下载
+
+- [frpc_0.58.1_linux_amd64](https://bucket.passnat.com/bucket-passnat/frp/frpc_0.58.1_linux_amd64)
+- [frpc_0.58.1_linux_arm64](https://bucket.passnat.com/bucket-passnat/frp/frpc_0.58.1_linux_arm64)
+
+### 文字版
+
+1. 根据自己的系统平台，选择对应架构的二进制文件。本文以 amd64 版为例，如为 arm 平台请选择 arm64。
+
+```bash
+wget https://bucket.passnat.com/bucket-passnat/frp/frpc_0.58.1_linux_amd64 -O frpc
+```
+
+2. 前往 PassNAT 控制台创建隧道，直接复制或下载配置文件。
+
+3. 添加可执行权限并启动 Frpc 客户端。
+
+```bash
+chmod +x frpc
+```
+
+```bash
+./frpc -c frpc.toml
+```
