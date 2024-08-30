@@ -2,6 +2,7 @@
 sidebar_position: 2
 ---
 
+import { getOssLink } from "../../src/utils/index.ts"
 import Videoplayer from "../../src/components/video-player/index.tsx"
 
 # Linux 连接与使用
@@ -21,7 +22,7 @@ import Videoplayer from "../../src/components/video-player/index.tsx"
 
 ### 视频版
 
-<Videoplayer video="https://bucket.passnat.com/bucket-passnat/tutorial/linux-docker.mp4" />
+<Videoplayer video={getOssLink("bucket-passnat/tutorial/linux-docker.mp4")} />
 
 ### 文字版
 
