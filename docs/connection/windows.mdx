@@ -2,6 +2,7 @@
 sidebar_position: 1
 ---
 
+import { getOssLink } from "../../src/utils/index.ts"
 import Videoplayer from "../../src/components/video-player/index.tsx"
 
 # Windows 连接与使用
@@ -12,14 +13,24 @@ import Videoplayer from "../../src/components/video-player/index.tsx"
 
 ## 客户端下载
 
-- [frpc_0.58.1_windows_amd64.exe](https://bucket.passnat.com/bucket-passnat/frp/frpc_0.58.1_windows_amd64.exe)
-- [frpc_0.58.1_windows_arm64.exe](https://bucket.passnat.com/bucket-passnat/frp/frpc_0.58.1_windows_arm64.exe)
+- [PassNAT 官方客户端（🌟推荐）](https://bucket.passnat.com/bucket-passnat/client/win32/x64/PassNAT-1.0.0-setup.exe)
+- [frpc_0.58.1_windows_amd64.exe(可选)](https://bucket.passnat.com/bucket-passnat/frp/frpc_0.58.1_windows_amd64.exe)
+- [frpc_0.58.1_windows_arm64.exe(可选)](https://bucket.passnat.com/bucket-passnat/frp/frpc_0.58.1_windows_arm64.exe)
 - [frpmgr-1.17.0-setup-x64.exe (可选) ](https://bucket.passnat.com/bucket-passnat/frp-edge/frpmgr-1.17.0-setup-x64.exe)
 
 ## 总览
 
+- [使用官方客户端](#使用官方客户端)
 - [无GUI操作](#无-gui-操作)
 - [使用第三方GUI操作](#使用第三方-gui-操作)
+
+### 使用官方客户端
+
+PassNAT 特别定制的客户端，友好的界面，方便的操作，更容易上手。
+
+#### 视频版
+
+<Videoplayer video={getOssLink("bucket-passnat/tutorial/windows-gui.mp4")} />
 
 ### 无 GUI 操作
 
@@ -27,7 +38,7 @@ import Videoplayer from "../../src/components/video-player/index.tsx"
 
 #### 视频版
 
-<Videoplayer video="https://bucket.passnat.com/bucket-passnat/tutorial/windows-cmd.mp4" />
+<Videoplayer video={getOssLink("bucket-passnat/tutorial/windows-cmd.mp4")} />
 
 #### 文字版
 
@@ -62,4 +73,4 @@ frpc.exe -c frpc.toml
 
 #### 视频版
 
-<Videoplayer video="https://bucket.passnat.com/bucket-passnat/tutorial/windows-gui.mp4" />
+<Videoplayer video={getOssLink("bucket-passnat/tutorial/windows-gui.mp4")} />
