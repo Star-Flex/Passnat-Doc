@@ -1,5 +1,67 @@
+import Tabs from "@theme/Tabs"
+import TabItem from "@theme/TabItem"
+
+import errpic from "../../public/addon/err_pic.webp"
+import defender from "../../public/addon/defender-pic.webp"
+import defender2 from "../../public/addon/defender-2.webp"
+import defender3 from "../../public/addon/defender-3.webp"
+import defender4 from "../../public/addon/defender-4.webp"
+import defender5 from "../../public/addon/defender-5.webp"
+
 # Windows 系统上的问题
 
 ### 问题描述
 
 在 Windows 系统上启动官方的 PassNAT 客户端，你可能会遇到下面截图的问题：
+
+<img src={errpic} alt="errpic" />
+
+如果看到这个界面，请你 **保持冷静** ，也没有外星人会入侵地球。这并不是什么严重的问题。
+
+问题出在 PassNAT 基于 Frpc 作为核心组件。而 Frpc 早在 2020 年就被 Windows Defender 误报为病毒了。所以，Windows Defender 会将 Frpc 识别为病毒，然后将其隔离。
+
+### 为什么会被误报？
+
+总结： Frpc 是一个内网穿透工具，而黑客攻防工具中也会用到大规模使用内网穿透技术。
+
+以下是信息来源
+
+- https://github.com/fatedier/frp/issues/2104
+- https://github.com/fatedier/frp/issues/2860
+- https://www.v2ex.com/t/729614
+- https://wuter.cn/1909.html/
+
+您也可以在以下站点中上传 PassNAT 客户端文件进行检测，至于检出的结果需要您自行核对以及信任：
+
+- [VirusTotal](https://www.virustotal.com/gui/file/7)
+- [Virscan](www.virscan.org)
+- [Jotti](https://virusscan.jotti.org/zh-CN)
+
+### 你说的都对，但是如何解决？
+
+<Tabs queryString="current">
+  <TabItem value="defender-gui" label="Windows Defender GUI" default>
+
+    1. 打开 Windows Defender 安全中心
+        - 直接 <a href="ms-settings:windowsdefender">点我打开</a>  Windows Defender 安全中心
+        - 或者按下 `Win + I` 打开设置，选择“隐私和安全性”，然后选择“Windows 安全中心”
+        - 或者在任务栏搜索框中输入“Windows Defender”，然后选择“Windows 安全中心”
+        <img src={defender}></img>
+
+    2. 选择“病毒和威胁防护” -> “病毒和威胁防护设置”
+        <img src={defender2}></img>
+
+    3. 选择“排除设置或排除项”
+        <img src={defender3}></img>
+
+    4. 选择 “文件夹类型”
+        <img src={defender4}></img>
+
+    5. 选择 PassNAT 客户端所在的文件夹
+        <img src={defender5}></img>
+
+    6. 重新安装 PassNAT 客户端到刚才选择排除的文件夹
+
+  </TabItem>
+
+</Tabs>
