@@ -5,7 +5,7 @@ sidebar_position: 2
 import { getOssLink } from "../../src/utils/index.ts"
 import Videoplayer from "../../src/components/video-player/index.tsx"
 
-# Linux 连接与使用
+# Linux
 
 :::tip
 本页面适用于 `Linux` 各大发行版系统。
@@ -19,6 +19,12 @@ import Videoplayer from "../../src/components/video-player/index.tsx"
 
 - `docker pull snowdreamtech/frpc:latest` dockerhub镜像，由 [snowdreamtech](https://hub.docker.com/r/snowdreamtech/frpc) 提供。
 - `docker pull uhub.service.ucloud.cn/ucpublic/frpc:latest` 国内加速镜像，加速服务由 UCloud 提供。
+
+:::tip
+
+Docker 中的 `-v /root/frpc/config.toml:/etc/frp/frpc.toml` , 左侧为宿主机的配置文件路径，右侧为容器内的配置文件路径。请按照实际情况修改。
+
+:::
 
 ### 视频版
 

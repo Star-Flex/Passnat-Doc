@@ -1,0 +1,32 @@
+import { getOssLink } from "../../src/utils/index.ts"
+import Videoplayer from "../../src/components/video-player/index.tsx"
+
+# OpenWrt
+
+:::tip
+特别注意，本文章使用 OpenWrt 的修改分支 iStoreOS 作为示例，其他 OpenWrt 系统自行配置 Docker 环境。
+:::
+
+## 使用 Docker 部署 Frpc
+
+你可能需要用到的命令:
+
+```bash title="原版镜像，国内网络访问可能会出现问题。"
+docker run --restart=always --network host -d -v /root/frpc/config.toml:/etc/frp/frpc.toml --name frpc snowdreamtech/frpc
+```
+
+也可以使用由Ucloud提供的国内加速镜像
+
+```bash title="推荐优先使用国内加速镜像"
+docker run --restart=always --network host -d -v /root/frpc/config.toml:/etc/frp/frpc.toml --name frpc uhub.service.ucloud.cn/ucpublic/frpc:latest
+```
+
+:::tip
+
+Docker 中的 `-v /root/frpc/config.toml:/etc/frp/frpc.toml` , 左侧为宿主机的配置文件路径，右侧为容器内的配置文件路径。请按照实际情况修改。
+
+:::
+
+### 视频版
+
+<Videoplayer video={getOssLink("bucket-passnat/tutorial/openwrt-docker.mp4")} />
