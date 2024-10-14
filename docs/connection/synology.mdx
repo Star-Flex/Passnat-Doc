@@ -1,0 +1,29 @@
+import Tabs from "@theme/Tabs"
+import TabItem from "@theme/TabItem"
+
+import app from "../../public/connection/synology/1.png"
+
+# Synology
+
+### 群晖 NAS 中使用 PassNAT 进行内网穿透
+
+:::tip
+如果你的群晖版本在 7.1 以下，请使用 Docker 启动原生的 Frp 客户端。
+:::
+
+<Tabs queryString="current">
+  <TabItem value="latest" label="群晖版本 >= 7.1" default>
+    1. 添加套件源 `https://spk7.imnks.com` 
+    <img src={app} alt="app" />
+    
+    2. 安装 `Frpc客户端` 套件
+    3. 打开 `Frpc客户端` 套件，粘贴 PassNAT 控制台提供的配置信息
+
+    如果需要关闭 Frpc 客户端，可以直接清空配置信息并保存。隧道将会被暂停。
+
+  </TabItem>
+
+  <TabItem value="old" label="群晖版本 < 7.1">
+
+  </TabItem>
+</Tabs>
