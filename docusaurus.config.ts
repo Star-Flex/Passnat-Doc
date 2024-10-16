@@ -29,7 +29,6 @@ const config: Config = {
     defaultLocale: "zh-Hans",
     locales: ["zh-Hans"]
   },
-
   presets: [
     [
       "classic",
