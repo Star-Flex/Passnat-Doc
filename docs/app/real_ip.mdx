@@ -1,0 +1,32 @@
+---
+sidebar_position: 3
+---
+
+# 获取用户真实 IP
+
+:::tip
+本文以 `mc paper` 服务端 基于 `tcp` 协议 进行演示。
+更多信息见 [frp docs](https://gofrp.org/zh-cn/docs/features/common/realip/)。
+:::
+
+## 配置 mc 服务端
+
+编辑 `paper 服务端所在路径 /config/paper-global.yml` 中的 `proxy-protocol:` 为 `true` 。
+
+:::tip
+部分 mc 服务端没有内置 `Proxy Protocol` 支持，可以使用 [haproxy-detector](https://github.com/andylizi/haproxy-detector) 等插件，具体解决方案请按照实际情况修改。
+:::
+
+## 配置 frpc 的配置文件
+
+在 `frpc.toml` 里将需要开启真实用户 IP 的隧道下添加：
+
+```toml
+transport.proxyProtocolVersion = "v2"
+```
+
+## 启动并连接
+
+正常启动即可。
+
+尝试连接即可在服务端日志内查看到玩家的真实 IP 而不是未开启前的 frpc 所在局域网 IP。
