@@ -27,3 +27,10 @@ import app from "../../public/connection/synology/1.png"
 
   </TabItem>
 </Tabs>
+
+### 群晖系统穿透过程中常见问题
+
+- 群晖系统版本低于 7.1 时，需要使用 Docker 启动 Frp 客户端
+- 如果出现 400 Bad Request The plain HTTP request was sent to HTTPS port ，则说明你正在使用 HTTP 协议访问 HTTPS 端口。你有两种解决方案：
+  1. 使用 HTTPS 协议访问 HTTPS 端口。即在浏览器中输入 `https://域名:端口`
+  2. 群晖中打开 控制面板 -> 登录门户 -> 网页门户 -> 自动将 DSM 桌面的 HTTP 请求重定向到 HTTPS 请求 -> 关闭 ， 再使用 PassNAT 穿透 HTTP 端口
